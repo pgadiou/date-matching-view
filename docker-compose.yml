@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: demo_smart_view
+    environment:
+      - APPLICATION_PORT=3310
+      - DATABASE_URL=postgres://philippegadiou@host.docker.internal:5432/philippegadiou
+      - DATABASE_SCHEMA=public
+      - DATABASE_SSL=false
+      - FOREST_AUTH_SECRET=00ba8a2baa8baffcdf343811f4ef06ba8ca482a6ad336b1e92741ce2723059e5f99326ca2a1d0d835f0ea9c5b776d513
+      - FOREST_ENV_SECRET=365c942c6e69dfd473d1b22a09220adf1d99a10632456cf68159d1ee57fbbb14
+    ports:
+      - "3310:3310"
+    volumes:
+      - ./:/usr/src/app
